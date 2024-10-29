@@ -26,11 +26,11 @@ from PaginaWeb.views import ingresarlocal
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', Login),
-    path('crear-cuenta/', CrearCuenta),
-    path('pagina-admin/', Administrador),
-    path('crear-cuenta-admin/', CrearCuentaAdmin),
-    path('pagina-repartidor/', Repartidor),
+    path('login/', Login, name='login'),
+    path('crear-cuenta/', CrearCuenta,name='crear_cuenta'),
+    path('pagina-admin/', Administrador,name='administrador'),
+    path('crear-cuenta-admin/', CrearCuentaAdmin,name='crear_cuenta_admin'),
+    path('pagina-repartidor/', Repartidor,name='repartidor'),
     path('portal_pago/',portalpago),
     path('ingresar_platillo/',ingresarproducto),
     path('carrito_de_compra/',carritocompra),
