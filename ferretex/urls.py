@@ -17,11 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from PaginaWeb.views import portalpago,ingresarplatillo,carritocompra
-from PaginaWeb.views import verplatillo,pagofracaso,pagoexitoso
+from PaginaWeb.views import portalpago,ingresarproducto,carritocompra
+from PaginaWeb.views import verproducto,pagofracaso,pagoexitoso
 from PaginaWeb.views import ingresarcatalogo,Login, CrearCuenta, paginaprincipal
 from PaginaWeb.views import Administrador,Repartidor, CrearCuentaAdmin
-from PaginaWeb.views import ingresarsucursal, ingresartrivia, Trivia
+from PaginaWeb.views import ingresarlocal
 
 
 urlpatterns = [
@@ -32,14 +32,12 @@ urlpatterns = [
     path('crear-cuenta-admin/', CrearCuentaAdmin),
     path('pagina-repartidor/', Repartidor),
     path('portal_pago/',portalpago),
-    path('ingresar_platillo/',ingresarplatillo),
+    path('ingresar_platillo/',ingresarproducto),
     path('carrito_de_compra/',carritocompra),
     path('pago fracaso/',pagofracaso),
     path('pago exitoso/',pagoexitoso),
     path('ingresar catalogo/',ingresarcatalogo),
-    path('ingresar sucursal/',ingresarsucursal),
-    path('ingresar trivia/',ingresartrivia),
-    path('trivia/',Trivia),
-    path('ver_platillo/',verplatillo),
+    path('ingresar sucursal/',ingresarlocal),
+    path('ver_producto/',verproducto),
     path('pagina_principal/',paginaprincipal)
 ]

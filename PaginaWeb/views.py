@@ -19,11 +19,11 @@ def Repartidor(request):
 def CrearCuentaAdmin(request):
     return render(request, "crear-cuenta-admin.html")
 
-def ingresarplatillo(request):
-    return render(request,"ingresarplatillo.html")
+def ingresarproducto(request):
+    return render(request,"ingresarproducto.html")
 
-def verplatillo(request):
-    return render(request, 'verplatillo.html')
+def verproducto(request):
+    return render(request, 'verproducto.html')
 
 def pagofracaso(request):
     return render(request,"pagofracaso.html")
@@ -37,14 +37,8 @@ def ingresarcatalogo(request):
 def paginaprincipal(request):
     return render(request,"paginaprincipal.html")
 
-def ingresarsucursal(request):
-    return render(request,"ingresar sucursal.html")
-
-def ingresartrivia(request):
-    return render(request,"ingresar trivia.html")
-
-def Trivia(request):
-    return render(request,"trivia.html")
+def ingresarlocal(request):
+    return render(request,"ingresar local.html")
 
 def carritocompra(request):
     return render(request,'carrito.html')
