@@ -17,20 +17,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from PaginaWeb.views import portalpago,ingresarproducto,carritocompra
+from PaginaWeb.views import portalpago,ingresarproducto,carritocompra,Update_Usuario
 from PaginaWeb.views import verproducto,pagofracaso,pagoexitoso
 from PaginaWeb.views import ingresarcatalogo,Login, CrearCuenta, paginaprincipal
-from PaginaWeb.views import Administrador,Repartidor, CrearCuentaAdmin
+from PaginaWeb.views import Administrador,Repartidor, CrearCuentaAdmin,ver_usuario,delete_usuario
 from PaginaWeb.views import ingresarlocal
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', Login, name='login'),
+    path('usuarios/<int:emp_id>/',ver_usuario, name='ver_usuario'),
     path('crear-cuenta/', CrearCuenta,name='crear_cuenta'),
     path('pagina-admin/', Administrador,name='administrador'),
     path('crear-cuenta-admin/', CrearCuentaAdmin,name='crear_cuenta_admin'),
     path('pagina-repartidor/', Repartidor,name='repartidor'),
+    path('delete-usuario/<int:emp_id>/',delete_usuario, name='delete_usuario'),
     path('portal_pago/',portalpago),
     path('ingresar_platillo/',ingresarproducto),
     path('carrito_de_compra/',carritocompra),
@@ -39,5 +41,6 @@ urlpatterns = [
     path('ingresar catalogo/',ingresarcatalogo),
     path('ingresar sucursal/',ingresarlocal),
     path('ver_producto/',verproducto),
-    path('pagina_principal/',paginaprincipal)
+    path('update_usuario/<int:emp_id>/', Update_Usuario),
+    path('pagina_principal/',paginaprincipal,name='usuario')
 ]
