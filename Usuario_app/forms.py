@@ -36,11 +36,11 @@ class UsuarioForm(forms.ModelForm):
             raise forms.ValidationError('El correo electrónico debe terminar en @gmail.com.')
         return email
     
-    def clean_contraseña(self):
-        contraseña= self.cleaned_data.get('contraseña')
-        if Usuario.objects.filter(contraseña=contraseña).exists():
-             raise forms.ValidationError('utilize otra contraseña')
-        return contraseña
+    def clean_nombre(self):
+        nombre= self.cleaned_data.get('nombre')
+        if Usuario.objects.filter(nombre=nombre).exists():
+             raise forms.ValidationError('utilize otro nombre')
+        return nombre  
     
 class UsuarioAdminForm(forms.ModelForm):
     class Meta:
@@ -53,11 +53,11 @@ class UsuarioAdminForm(forms.ModelForm):
             raise forms.ValidationError('El correo electrónico debe terminar en @gmail.com.')
         return email
 
-    def clean_contraseña(self):
-        contraseña= self.cleaned_data.get('contraseña')
-        if Usuario.objects.filter(contraseña=contraseña).exists():
-             raise forms.ValidationError('utilize otra contraseña')
-        return contraseña    
+    def clean_nombre(self):
+        nombre= self.cleaned_data.get('nombre')
+        if Usuario.objects.filter(nombre=nombre).exists():
+             raise forms.ValidationError('utilize otra nombre')
+        return nombre    
     
     def clean_tipo(self):
         tipo = self.cleaned_data.get('tipo')
