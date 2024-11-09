@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ferretex',
     'PaginaWeb',
-    'Usuario_app' 
+    'Usuario_app',
+    'Catalogo_app',
+    'Sucursal_app',
+    'Producto_app'
 ]
 
 MIDDLEWARE = [

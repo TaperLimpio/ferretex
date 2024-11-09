@@ -1,0 +1,195 @@
+body {
+    background: linear-gradient(135deg, #f3650c, #e07822);
+}
+nav {
+    background-color: rgba(217, 240, 134, 0.906);
+}
+
+.container {
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.navbar-derecha {
+    margin-right: 30px;
+}
+
+.book{
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    top: 7px;
+    left: 920px;
+}
+.ME{
+    position: relative;
+    left: 1120px;
+    font-size: 20px;
+}
+
+.cafe{
+    position: relative;
+    top: 7px;
+    left: 570px;
+}
+
+.booky{
+    position: relative;
+    top: 7px;
+    left: 390px;
+}
+
+i{
+    color: rgb(99, 78, 2);
+}
+i:hover{
+    color: rgb(0, 79, 32);
+    text-decoration: double;
+    text-shadow: 5px 5px 5px rgb(36, 71, 1);
+}
+
+.Sucu{
+    position: relative;
+    left: 900px;
+}
+
+.person{
+    position: relative;
+    left: 910px;
+}
+
+.shamrock {
+    font-size: 1.5em;
+    color: #FFD700;
+}
+
+a{
+    text-decoration: none;
+}
+
+#Bienvenida {
+    text-align: left;
+}
+
+.row-lista{
+    margin-bottom: 10px;
+}
+
+.titulo-categoria, .nom , .dir{
+    font-family: 'Lobster', cursive;
+}
+
+#Titulo-pag{
+    font-family: 'Lobster', cursive;
+    margin-bottom: 15px;
+}
+#contenido{
+    padding-bottom: 10px;
+}
+
+/*
+body {
+    background: linear-gradient(135deg, #f3650c, #e07822);
+}
+nav {
+    background-color: rgba(217, 240, 134, 0.906);
+}
+
+.container {
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.navbar-derecha {
+    margin-right: 30px;
+}
+
+.book{
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    top: 7px;
+    left: 920px;
+}
+.ME{
+    position: relative;
+    left: 1120px;
+    font-size: 20px;
+}
+
+i{
+    color: rgb(99, 78, 2);
+}
+i:hover{
+    color: rgb(0, 79, 32);
+    text-decoration: double;
+    text-shadow: 5px 5px 5px rgb(36, 71, 1);
+}
+
+.Sucu{
+    position: relative;
+    left: 900px;
+}
+
+.person{
+    position: relative;
+    left: 910px;
+}
+
+.shamrock {
+    font-size: 1.5em;
+    color: #FFD700;
+}
+
+a{
+    text-decoration: none;
+}
+
+#Bienvenida {
+    text-align: left;
+}
+
+.row-lista{
+    margin-bottom: 10px;
+}
+
+.titulo-categoria, .nom , .dir{
+    font-family: 'Lobster', cursive;
+}
+
+#Titulo-pag{
+    font-family: 'Lobster', cursive;
+    margin-bottom: 15px;
+}
+#contenido{
+    padding-bottom: 10px;
+}*/
+/*
+        body {
+            background: linear-gradient(135deg, #32CD32, #FFD700);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            font-family: 'Lobster', cursive;
+            color: green;
+            font-size: 2.5em;
+        }
+        .shamrock {
+            font-size: 3em;
+            color: #FFD700;
+        }
+*/

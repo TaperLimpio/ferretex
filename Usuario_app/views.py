@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from Usuario_app.models import Usuario
 from . import forms
-from .forms import UsuarioForm, UsuarioAdminForm
+from .forms import UsuarioForm, UsuarioAdminForm, Filtro
 
 def Login(request):
     if request.method == 'POST':
@@ -11,9 +11,9 @@ def Login(request):
         if usuario and usuario.estado == 'activo':
             request.session['usuario_id'] = usuario.id
             if usuario.tipo == 'usuario':
-                return redirect('usuario')  # Redirigir a la URL 'usuario'
+                return redirect('pagina_principal')  # Redirigir a la URL 'usuario'
             elif usuario.tipo == 'administrador':
-                return redirect('administrador')  # Redirigir a la URL 'administrador'
+                return redirect('pagina_administrador')  # Redirigir a la URL 'administrador'
             elif usuario.tipo=='repartidor':
                 return redirect('repartidor')#lo mismo pero para el repartidor
         else:
@@ -69,3 +69,32 @@ def delete_usuario(request, emp_id):
         usuario.estado = 'inactivo'
         usuario.save()
     return redirect('login')
+
+def Index_Usuario(request):
+    filtro = Filtro(initial={'tipo':'----','estado':'----'})
+    if request.method=="POST":
+        filtro = Filtro(request.POST)
+        if filtro.is_valid():
+            Tipo = filtro.cleaned_data['tipo']
+            Estado = filtro.cleaned_data['estado']
+            print(Tipo)
+            print(Estado)
+            if (Tipo == 'Todo' and Estado == 'Todo'):
+                print("todo")
+                usuario = Usuario.objects.all()
+                print(usuario)
+            elif(Tipo != 'Todo' and Estado == 'Todo'):
+                print("por tipo")
+                usuario = Usuario.objects.filter(tipo = Tipo)
+                print(usuario)
+            elif(Estado != 'Todo'and Tipo == 'Todo'):
+                print("por estado")
+                usuario = Usuario.objects.filter(estado = Estado)
+                print(usuario)
+            else:
+                print("por tipo y estado")
+                usuario = Usuario.objects.filter(tipo = Tipo,estado = Estado)
+    else:        
+        usuario = Usuario.objects.all()
+    data = {'usuario': usuario,'form':filtro}
+    return render(request, 'usuarios.html', data)

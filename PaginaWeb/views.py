@@ -14,7 +14,7 @@ def Repartidor(request):
     return render(request, "pagina-repartidor.html")
 
 def ingresarproducto(request):
-    return render(request,"ingresarproducto.html")
+    return render(request,"ingresarproductos.html")
 
 def verproducto(request):
     return render(request, 'verproducto.html')
@@ -25,14 +25,8 @@ def pagofracaso(request):
 def pagoexitoso(request):
     return render(request,"pago exitoso.html")
 
-def ingresarcatalogo(request):
-    return render(request,"ingresar catalogo.html")
-
 def paginaprincipal(request):
     return render(request,"paginaprincipal.html")
-
-def ingresarlocal(request):
-    return render(request,"ingresar local.html")
 
 def carritocompra(request):
     return render(request,'carrito.html')

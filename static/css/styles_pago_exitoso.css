@@ -1,0 +1,34 @@
+body {
+    background: linear-gradient(135deg, #f3650c, #e07822);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 600px;
+}
+h1 {
+    font-family: 'Lobster', cursive;
+    color: rgb(236, 139, 64);
+    font-size: 2.5em;
+}
+.shamrock {
+    font-size: 3em;
+    color: #FFD700;
+}
+table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/*
+        <h1>Ferretex</h1>
+        <div class="shamrock">🛠️</div>
+*/
