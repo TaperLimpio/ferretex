@@ -15,6 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 
 from PaginaWeb.views import portalpago,ingresarproducto,carritocompra
@@ -36,6 +38,8 @@ from Catalogo_app.views import ver_catalogoadmin,activar_catalogo,desactivar_cat
 from Sucursal_app.views import listasucursal, ingresarsucursal, consultarsucursal
 from Sucursal_app.views import modificarsucursal, deshabilitarsucursal
 
+from Pedido_app.views import consultar_pedidos,ver_pedido
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', Login, name='login'),
@@ -55,10 +59,10 @@ urlpatterns = [
     path('pago exitoso/',pagoexitoso),
     
     path('ver_producto/',verproducto),
-    path('ingresar_producto/',ingresarproducto, name='ingresar_platillo'),
-    path('activar_producto/<int:platillo_id>/',activar_producto, name='activar_platillo'),
-    path('desactivar_producto/<int:platillo_id>/',desactivar_producto, name='desactivar_platillo'),
-    path('actualizar_platillo/<int:platillo_id>/',actualizarproducto, name='actualizar_platillo'),
+    path('ingresar_producto/',ingresarproducto, name='ingresar_producto'),
+    path('activar_producto/<int:producto_id>/',activar_producto, name='activar_producto'),
+    path('desactivar_producto/<int:producto_id>/',desactivar_producto, name='desactivar_producto'),
+    path('actualizar_producto/<int:producto_id>/',actualizarproducto, name='actualizar_producto'),
     
     path('ingresar_catalogo/',ingresarcatalogo,name='ingresar_catalogo'),
     path('ver_catalogo/<int:catalogo_id>/', ver_catalogo, name='ver_catalogo'), 
@@ -75,4 +79,7 @@ urlpatterns = [
     path('modificar_sucursal/<int:id>/', modificarsucursal),
     path('deshabilitar_sucursal/<int:id>/', deshabilitarsucursal),
 
-]
+    path('pedidos/',consultar_pedidos),
+    path('ver_pedido/<int:pedido_id>/',ver_pedido),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

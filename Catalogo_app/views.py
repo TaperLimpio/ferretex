@@ -15,12 +15,12 @@ def ingresarcatalogo(request):
 
 
 def paginaprincipal(request): 
-    catalogos = Catalogo.objects.filter(estado='Activado').prefetch_related('producto_set').all() 
+    catalogos = Catalogo.objects.filter(estado='Activado').prefetch_related('productos_set').all() 
     return render(request, 'pagina_principal.html', {'catalogos': catalogos})
 
 
 def paginaadmin(request):
-    catalogos = Catalogo.objects.prefetch_related('producto_set').all()
+    catalogos = Catalogo.objects.prefetch_related('productos_set').all()
     return render(request, 'pagina-admin.html', {'catalogos': catalogos})
 
 def actualizarcatalogo(request, catalogo_id):
