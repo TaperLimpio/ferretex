@@ -87,3 +87,11 @@ a{
 #contenido{
     padding-bottom: 10px;
 }
+.carrito_row{
+    text-align: left;
+    font-size: 85%;
+}
+.foto-producto{
+    width: 200px;
+    height: 200px;
+}

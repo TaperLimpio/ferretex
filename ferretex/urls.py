@@ -40,6 +40,8 @@ from Sucursal_app.views import modificarsucursal, deshabilitarsucursal
 
 from Pedido_app.views import consultar_pedidos,ver_pedido
 
+from Carrito_app.views import ver_carrito, agregar_a_carrito
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', Login, name='login'),
@@ -81,5 +83,8 @@ urlpatterns = [
 
     path('pedidos/',consultar_pedidos),
     path('ver_pedido/<int:pedido_id>/',ver_pedido),
+
+    path('mi_carrito/<int:usuario_id>',ver_carrito,name="mi_carrito"),
+    path('agregar_a_carrito/<int:producto_id>',agregar_a_carrito,name="agregar_a_carrito")
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

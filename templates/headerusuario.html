@@ -42,7 +42,7 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'ver_usuario' request.session.usuario_id %}"><i class="bi bi-person-circle"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" class="navbar-derecha" href="#"><i class="bi bi-cart"></i></a>
+                    <a class="nav-link active" aria-current="page" class="navbar-derecha" href="{% url 'mi_carrito' request.session.usuario_id %}"><i class="bi bi-cart"></i></a>
                 </li>
             </ul>
         </div>

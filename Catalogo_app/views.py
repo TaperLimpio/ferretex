@@ -51,7 +51,7 @@ def asignar_producto(request, catalogo_id):
 def ver_catalogo(request, catalogo_id):
     catalogo = get_object_or_404(Catalogo, id=catalogo_id)
     productos_activados = catalogo.productos_set.filter(estado='Activado')
-    return render(request, 'ver_catalogo.html', {'catalogo': catalogo, 'platillos': productos_activados})
+    return render(request, 'ver_catalogo.html', {'catalogo': catalogo, 'productos': productos_activados})
 
 
 def ver_catalogoadmin(request, catalogo_id):
