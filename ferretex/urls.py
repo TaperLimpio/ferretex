@@ -40,7 +40,8 @@ from Sucursal_app.views import modificarsucursal, deshabilitarsucursal
 
 from Pedido_app.views import consultar_pedidos,ver_pedido
 
-from Carrito_app.views import ver_carrito, agregar_a_carrito
+from Carrito_app.views import ver_carrito, agregar_a_carrito, aumentar_cantidad
+from Carrito_app.views import disminuir_cantidad,realizar_pedido
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -85,6 +86,9 @@ urlpatterns = [
     path('ver_pedido/<int:pedido_id>/',ver_pedido),
 
     path('mi_carrito/<int:usuario_id>',ver_carrito,name="mi_carrito"),
-    path('agregar_a_carrito/<int:producto_id>',agregar_a_carrito,name="agregar_a_carrito")
+    path('agregar_a_carrito/<int:producto_id>',agregar_a_carrito,name="agregar_a_carrito"),
+    path('aumentar_cantidad/<int:pedido_carrito_id>',aumentar_cantidad,name='aumentar_cantidad'),
+    path('disminuir_cantidad/<int:pedido_carrito_id>',disminuir_cantidad,name='disminuir_cantidad'),
+    path('realizar_pedido/',realizar_pedido,name='realizar_pedido')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

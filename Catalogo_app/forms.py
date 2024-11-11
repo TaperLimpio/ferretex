@@ -6,3 +6,11 @@ class CatalogoForm(forms.ModelForm):
         model = Catalogo
         fields = ['nombre', 'descripcion', 'imagen']
 
+class CantidadProducto(forms.Form):
+    cantidad = forms.IntegerField()
+
+    def cantidad_minima(self):
+        can = self.cleaned_data.get('cantidad')
+        if can < 0:
+            raise forms.ValidationError('Porfavor ingrese la cantidad que desea.')
+        return can

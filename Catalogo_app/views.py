@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import CatalogoForm
+from .forms import CatalogoForm, CantidadProducto
 from .models import Catalogo
 from Producto_app.models import Producto
+from Carrito_app.models import Carrito
 
 def ingresarcatalogo(request):
     form = CatalogoForm()

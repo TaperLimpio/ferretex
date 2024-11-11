@@ -36,3 +36,27 @@ h1 {
 #BarraBusqueda, #btnBuscar{
     display: inline;
 }
+#total{
+    margin-top: 2.5%;
+    margin-bottom: 0.5%;
+    text-align: left;
+}
+#realizar-pedido{
+
+}
+.linea-lista-carrito{
+    padding: 0;
+    margin: 0;
+}
+.imagen{
+    width: 100px;
+    height: 100px;
+}
+.btn-cantidad{
+    padding: 3.2%;
+    text-decoration: none;
+}
+.cantidad{
+    padding: 3.4%;
+    background-color: grey;
+}
