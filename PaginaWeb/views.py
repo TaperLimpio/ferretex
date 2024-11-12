@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from  PaginaWeb.models import Usuario  # Asegúrate de que esta sea tu clase de usuario
+from Pedido_app.models import Pedido
 from . import forms
 from .forms import UsuarioForm,UsuarioAdminForm
 
@@ -19,14 +20,6 @@ def ingresarproducto(request):
 def verproducto(request):
     return render(request, 'verproducto.html')
 
-def pagofracaso(request):
-    return render(request,"pagofracaso.html")
-
-def pagoexitoso(request):
-    return render(request,"pago exitoso.html")
-
 def paginaprincipal(request):
     return render(request,"paginaprincipal.html")
 
-def carritocompra(request):
-    return render(request,'carrito.html')

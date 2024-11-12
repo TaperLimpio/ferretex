@@ -19,8 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-from PaginaWeb.views import portalpago,ingresarproducto,carritocompra
-from PaginaWeb.views import verproducto,pagofracaso,pagoexitoso
+from PaginaWeb.views import portalpago,ingresarproducto
+from PaginaWeb.views import verproducto
 from PaginaWeb.views import paginaprincipal
 from PaginaWeb.views import Repartidor
 
@@ -41,7 +41,8 @@ from Sucursal_app.views import modificarsucursal, deshabilitarsucursal
 from Pedido_app.views import consultar_pedidos,ver_pedido
 
 from Carrito_app.views import ver_carrito, agregar_a_carrito, aumentar_cantidad
-from Carrito_app.views import disminuir_cantidad,realizar_pedido
+from Carrito_app.views import disminuir_cantidad,realizar_pedido,pagoexitoso
+from Carrito_app.views import pagofracaso
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -56,10 +57,6 @@ urlpatterns = [
     path('pagina_principal/',paginaprincipal,name='pagina_principal'),
     path('pagina-admin/', paginaadmin, name='pagina_administrador'),
     path('portal_pago/',portalpago),
-
-    path('carrito_de_compra/',carritocompra),
-    path('pago fracaso/',pagofracaso),
-    path('pago exitoso/',pagoexitoso),
     
     path('ver_producto/',verproducto),
     path('ingresar_producto/',ingresarproducto, name='ingresar_producto'),
@@ -89,6 +86,8 @@ urlpatterns = [
     path('agregar_a_carrito/<int:producto_id>',agregar_a_carrito,name="agregar_a_carrito"),
     path('aumentar_cantidad/<int:pedido_carrito_id>',aumentar_cantidad,name='aumentar_cantidad'),
     path('disminuir_cantidad/<int:pedido_carrito_id>',disminuir_cantidad,name='disminuir_cantidad'),
-    path('realizar_pedido/',realizar_pedido,name='realizar_pedido')
+    path('realizar_pedido/',realizar_pedido,name='realizar_pedido'),
+    path('pago fracaso/',pagofracaso),
+    path('pago exitoso/',pagoexitoso),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
