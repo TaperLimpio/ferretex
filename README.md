@@ -8,4 +8,4 @@ Este es el repositorio de la pagina ferretex.
 - Pillow
 ## Detalles
 - La base de datos se titula "ferretex"
-- xddddd
+
