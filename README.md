@@ -7,3 +7,4 @@ Este es el repositorio de la pagina ferretex.
 - MariaDB
 ## Detalles
 - La base de datos se titula "ferretex"
+- xddddd
