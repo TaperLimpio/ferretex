@@ -3,15 +3,9 @@ body {
 }
 nav {
     background-color: rgba(217, 240, 134, 0.906);
+    color: black;
 }
-.dropdown-toggle{
-    color: rgb(99, 78, 2);
-}
-.dropdown-toggle:hover{
-    color: rgb(0, 79, 32);
-    text-decoration: double;
-    text-shadow: 5px 5px 5px rgb(36, 71, 1);
-}
+
 .container {
     background-color: aliceblue;
     padding: 20px;
@@ -19,8 +13,16 @@ nav {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
 }
+
 .navbar-derecha {
     margin-right: 30px;
+}
+
+.boton{
+    color: white;
+}
+.boton:hover{
+    color: whitesmoke;
 }
 
 i{
@@ -30,16 +32,6 @@ i:hover{
     color: rgb(0, 79, 32);
     text-decoration: double;
     text-shadow: 5px 5px 5px rgb(36, 71, 1);
-}
-
-.Sucu{
-    position: relative;
-    left: 900px;
-}
-
-.person{
-    position: relative;
-    left: 910px;
 }
 
 .shamrock {
@@ -70,14 +62,7 @@ a{
 #contenido{
     padding-bottom: 10px;
 }
-.carrito_row{
-    text-align: left;
-    font-size: 85%;
-}
 .foto-producto{
     width: 200px;
     height: 200px;
-}
-.boton{
-    color: white;
 }

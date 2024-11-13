@@ -45,7 +45,14 @@ class UsuarioForm(forms.ModelForm):
 class UsuarioAdminForm(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields = ['nombre', 'email', 'fono', 'tipo','contraseña']
+        fields = ['rut','nombre', 'email', 'fono', 'tipo','contraseña']
+
+
+    def clean_rut(self):
+        rut = self.cleaned_data.get('rut')
+        if not rut:
+            raise forms.ValidationError('Ingrese el rut en un formato correcto')
+        return rut
     
     def clean_email(self):
         email = self.cleaned_data.get('email')

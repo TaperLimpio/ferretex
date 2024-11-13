@@ -18,7 +18,7 @@
 </style>
 <div class="container mt-2 mf-2">
     <h4 id="Bienvenida">Bienvenido administrador</h4>
-    <h1 id="Titulo-pag">Catálogo de platillos</h1>
+    <h1 id="Titulo-pag">Catálogo de productos</h1>
     <div id="catalogo">
         {% for catalogo in catalogos %}
         <div class="container mt-2 mf-2 categoria bg-light p-3 rounded shadow-sm">
@@ -38,5 +38,5 @@
         {% endfor %}
     </div>
 </div>
-
+{% include 'footer.html' %}
 

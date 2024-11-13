@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils import timezone
 from .forms import CatalogoForm, CantidadProducto
 from .models import Catalogo
+from Usuario_app.models import Usuario
 from Producto_app.models import Producto
 from Carrito_app.models import Carrito
+from Pedido_app.models import Pedido
 
 def ingresarcatalogo(request):
     form = CatalogoForm()
@@ -24,6 +27,13 @@ def paginaadmin(request):
     catalogos = Catalogo.objects.prefetch_related('productos_set').all()
     return render(request, 'pagina-admin.html', {'catalogos': catalogos})
 
+def paginarepartidor(request):
+    id = request.session['usuario_id']
+    pedidos_generales = Pedido.objects.filter(estado = "activo")
+    pedidos_aceptados = Pedido.objects.filter(repartidor__id = id, estado = "tomado")
+    return render(request, 'pagina-repartidor.html',{'ped_generales':pedidos_generales,
+                                                     'ped_aceptados':pedidos_aceptados})
+
 def actualizarcatalogo(request, catalogo_id):
     catalogo = get_object_or_404(Catalogo, id=catalogo_id)
     if request.method == 'POST':
@@ -35,8 +45,6 @@ def actualizarcatalogo(request, catalogo_id):
         form = CatalogoForm(instance=catalogo)
     data = {'form': form, 'titulo': 'Actualizar catálogo'}
     return render(request, 'ingresar_catalogo.html', data)
-
-
 
 def asignar_producto(request, catalogo_id):
     catalogo = get_object_or_404(Catalogo, id=catalogo_id)

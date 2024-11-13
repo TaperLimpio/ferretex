@@ -3,6 +3,7 @@ body {
 }
 nav {
     background-color: rgba(217, 240, 134, 0.906);
+    color: black;
 }
 
 .container {
@@ -12,10 +13,11 @@ nav {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
 }
+
 .navbar-derecha {
     margin-right: 30px;
 }
-
+/*
 .book{
     padding: 10px 10px 10px 10px;
     position: relative;
@@ -39,6 +41,7 @@ nav {
     top: 7px;
     left: 390px;
 }
+*/
 
 i{
     color: rgb(99, 78, 2);
@@ -48,7 +51,7 @@ i:hover{
     text-decoration: double;
     text-shadow: 5px 5px 5px rgb(36, 71, 1);
 }
-
+ /*
 .Sucu{
     position: relative;
     left: 900px;
@@ -58,7 +61,7 @@ i:hover{
     position: relative;
     left: 910px;
 }
-
+*/
 .shamrock {
     font-size: 1.5em;
     color: #FFD700;
@@ -91,6 +94,7 @@ a{
     width: 200px;
     height: 200px;
 }
+
 /*
 body {
     background: linear-gradient(135deg, #f3650c, #e07822);

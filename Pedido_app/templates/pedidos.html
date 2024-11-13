@@ -1,7 +1,15 @@
 {% include 'headeradmin.html' %}
 <div class="container mt-5">
     <div class="alert alert-success display-1">Pedidos</div>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="filtrar">
+        </form>
+     </div>
     {%if pedidos%}
+     
      <table class="table table-striped">
         <thead>
             <tr>

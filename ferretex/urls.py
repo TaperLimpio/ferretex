@@ -21,8 +21,6 @@ from django.urls import path
 
 from PaginaWeb.views import portalpago,ingresarproducto
 from PaginaWeb.views import verproducto
-from PaginaWeb.views import paginaprincipal
-from PaginaWeb.views import Repartidor
 
 from Usuario_app.views import Login, CrearCuenta, CrearCuentaAdmin
 from Usuario_app.views import ver_usuario, Update_Usuario, delete_usuario
@@ -34,15 +32,19 @@ from Producto_app.views import actualizarproducto
 from Catalogo_app.views import ingresarcatalogo,paginaprincipal,paginaadmin
 from Catalogo_app.views import actualizarcatalogo,asignar_producto,ver_catalogo
 from Catalogo_app.views import ver_catalogoadmin,activar_catalogo,desactivar_catalogo
+from Catalogo_app.views import paginarepartidor
 
 from Sucursal_app.views import listasucursal, ingresarsucursal, consultarsucursal
 from Sucursal_app.views import modificarsucursal, deshabilitarsucursal
 
-from Pedido_app.views import consultar_pedidos,ver_pedido
+from Pedido_app.views import consultar_pedidos,ver_pedido,mis_pedidos
+from Pedido_app.views import cancelar_pedido
 
 from Carrito_app.views import ver_carrito, agregar_a_carrito, aumentar_cantidad
 from Carrito_app.views import disminuir_cantidad,realizar_pedido,pagoexitoso
 from Carrito_app.views import pagofracaso
+
+from TomarPedido_app.views import aceptar_pedido,entregar_pedido
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,12 +52,9 @@ urlpatterns = [
     path('usuarios/<int:emp_id>/',ver_usuario, name='ver_usuario'),
     path('crear-cuenta/', CrearCuenta,name='crear_cuenta'),
     path('crear-cuenta-admin/', CrearCuentaAdmin,name='crear_cuenta_admin'),
-    path('index usuario/', Index_Usuario, name='index_usuario'),
-    path('pagina-repartidor/', Repartidor,name='repartidor'),
+    path('index usuario/', Index_Usuario, name='index_usuario'),  
     path('delete-usuario/<int:emp_id>/',delete_usuario, name='delete_usuario'),
     path('update_usuario/<int:emp_id>/', Update_Usuario),
-    path('pagina_principal/',paginaprincipal,name='pagina_principal'),
-    path('pagina-admin/', paginaadmin, name='pagina_administrador'),
     path('portal_pago/',portalpago),
     
     path('ver_producto/',verproducto),
@@ -69,25 +68,33 @@ urlpatterns = [
     path('actualizar_catalogo/<int:catalogo_id>/', actualizarcatalogo, name='actualizar_catalogo'),
     path('asignar_platillo/<int:catalogo_id>/', asignar_producto, name='asignar_platillo'),
     path('pagina-admin/', paginaadmin, name='pagina_administrador'),
+    path('pagina_principal/',paginaprincipal,name='pagina_principal'),
+    path('pagina-repartidor/', paginarepartidor,name='pagina-repartidor'),
     path('ver_catalogo_admin/<int:catalogo_id>/', ver_catalogoadmin, name='ver_catalogo_admin'),
     path('activar_catalogo/<int:catalogo_id>/',activar_catalogo, name='activar_catalogo'),
     path('desactivar_catalogo/<int:catalogo_id>/',desactivar_catalogo, name='desactivar_catalogo'),
 
-    path('lista_sucursales/', listasucursal),
+
+    path('lista_sucursales/', listasucursal,name='lista_sucursales'),
     path('ingresar sucursal/',ingresarsucursal),
     path('consultar_sucursal/<int:id>/', consultarsucursal),
     path('modificar_sucursal/<int:id>/', modificarsucursal),
     path('deshabilitar_sucursal/<int:id>/', deshabilitarsucursal),
 
-    path('pedidos/',consultar_pedidos),
+    path('pedidos/',consultar_pedidos,name='pedidos'),
     path('ver_pedido/<int:pedido_id>/',ver_pedido),
+    path('mis_pedidos/',mis_pedidos,name='mis_pedidos'),
+    path('cancelar_pedido/<int:id_pedido>',cancelar_pedido,name='cancelar_pedido'),
 
     path('mi_carrito/<int:usuario_id>',ver_carrito,name="mi_carrito"),
     path('agregar_a_carrito/<int:producto_id>',agregar_a_carrito,name="agregar_a_carrito"),
     path('aumentar_cantidad/<int:pedido_carrito_id>',aumentar_cantidad,name='aumentar_cantidad'),
     path('disminuir_cantidad/<int:pedido_carrito_id>',disminuir_cantidad,name='disminuir_cantidad'),
     path('realizar_pedido/',realizar_pedido,name='realizar_pedido'),
-    path('pago fracaso/',pagofracaso),
-    path('pago exitoso/',pagoexitoso),
+    path('pago fracaso/',pagofracaso,name='pago fracaso'),
+    path('pago exitoso/',pagoexitoso,name='pago exitoso'),
+
+    path('aceptar_pedido/<int:id_pedido>',aceptar_pedido,name='aceptar_pedido'),
+    path('entregar_pedido/<int:id_pedido>',entregar_pedido,name='entregar_pedido'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

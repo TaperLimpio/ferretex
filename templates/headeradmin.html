@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/styles_admin.css' %}">
 </head>
 <body>
+  <!--
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="../pagina-admin/"><div class="shamrock">🛠️</div></a>
@@ -34,7 +35,41 @@
           <li>
             <a href="{% url 'ingresar_catalogo' %}"><i class="bi bi-book-half booky"> Catálogo</i></a>
           </li>
+          <li>
+            <a href="{% url 'pedidos' %}"><i class="bi bi-book-half booky"> Pedidos</i></a>
+          </li>
             </ul>
           </div>
         </div>
     </nav>
+  -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'pagina_administrador' %}"><div class="shamrock">🛠️</div></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'pedidos' %}"><i class="bi bi-list-ol"> Pedidos</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'ingresar_catalogo' %}"><i class="bi bi-book-half booky"> Catálogo</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'ingresar_producto' %}"><i class="bi bi-box-seam caja"> Productos</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'index_usuario' %}"><i class="bi bi-book book"> Usuarios </i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'lista_sucursales' %}"> <i class="bi bi-buildings Sucu">Sucursales</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'ver_usuario' request.session.usuario_id %}"><i class="bi bi-person-circle person"> ME </i></a>
+          </li>
+        </ul>
+      </div> 
+    </div>
+  </nav>

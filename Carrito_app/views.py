@@ -24,7 +24,6 @@ def agregar_a_carrito(request,producto_id):
         carrito.save()
     return redirect('mi_carrito',usuario_id = id)
 
-
 def ver_carrito(request,usuario_id):
     carrito = Carrito.objects.filter(id_usuario = usuario_id)
     total = carrito.aggregate(Sum('precio'))
@@ -45,12 +44,12 @@ def disminuir_cantidad(request,pedido_carrito_id):
     id = request.session['usuario_id']
     try:
         carrito = Carrito.objects.get(id = pedido_carrito_id)
-        if carrito.cantidad == 0:
-            None
+        if carrito.cantidad <= 1:
+            carrito.delete()
         else:
             carrito.cantidad -= 1
-        carrito.precio = carrito.id_producto.precio * carrito.cantidad
-        carrito.save()
+            carrito.precio = carrito.id_producto.precio * carrito.cantidad
+            carrito.save()
     except Carrito.DoesNotExist:
         print("no existe")
     return redirect('mi_carrito',usuario_id = id)    
@@ -63,6 +62,7 @@ def realizar_pedido(request):
         print(request.POST)
         if form.is_valid:
             pedir(request,data = {'direccion':request.POST['direccion']})
+            return redirect('pago exitoso')
     return render(request,'realizar_pedido.html',{'form':form})
 
 def pedir(request,data):
@@ -86,7 +86,7 @@ def pedir(request,data):
         lista.cantidad = car.cantidad
         lista.save()
     print("Se termino y guardo el pedido")
-    return redirect('mi_carrito',usuario_id = id)
+    carrito.delete()
 
 def pagoexitoso(request):
     id = request.session['usuario_id']
