@@ -4,8 +4,13 @@ from .models import Producto
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['nombre','codigo', 'precio', 'descripcion', 'imagen', 'sucursales','catalogo']
+        fields = ['nombre','codigo', 'precio','stock','descripcion', 'imagen', 'sucursales','catalogo']
 
+    def clean_stock(self):
+        stock = self.cleaned_data.get('stock')
+        if stock < 0:
+            raise forms.ValidationError('Ingrese un cantidad de stock superior o igual a cero.')
+        return stock
 
     def clean_nombre(self):
         nombre = self.cleaned_data.get('nombre')

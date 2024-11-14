@@ -11,8 +11,10 @@ class Producto(models.Model):
     sucursales = models.ManyToManyField(Sucursal, through='ProductoSucursal')
     catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE, related_name='productos_set')
     estado = models.CharField(max_length=20, default='Desactivado')
+    stock = models.IntegerField(default=0)
 
 class ProductoSucursal(models.Model):
     sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
     producto = models.ForeignKey('Producto_app.Producto', on_delete=models.CASCADE)
     disponibilidad = models.BooleanField(default=True)
+    
