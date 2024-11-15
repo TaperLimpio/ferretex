@@ -1,11 +1,15 @@
 from django import forms
 from .models import Producto
+from Sucursal_app.models import Sucursal
 
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['nombre','codigo', 'precio', 'descripcion', 'imagen', 'sucursales','catalogo']
+        fields = ['nombre', 'codigo', 'precio', 'descripcion', 'imagen', 'sucursales', 'catalogo']
 
+    def __init__(self, *args, **kwargs):
+        super(ProductoForm, self).__init__(*args, **kwargs)
+        self.fields['sucursales'].queryset = Sucursal.objects.filter(estado='activo')
 
     def clean_nombre(self):
         nombre = self.cleaned_data.get('nombre')
@@ -18,3 +22,4 @@ class ProductoForm(forms.ModelForm):
         if Producto.objects.filter(codigo=codigo).exists():
             raise forms.ValidationError('Este código ya está registrado. Elija un código diferente.')
         return codigo
+
