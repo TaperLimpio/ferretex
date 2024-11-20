@@ -16,6 +16,9 @@
                         <a href="{% url 'disminuir_cantidad' ped.id %}" class=" badge btn btn-danger btn-cantidad"><i class="bi bi-dash-circle"> 1</i></a>
                         <span class="badge cantidad">{{ped.cantidad}}</span>
                         <a href="{% url 'aumentar_cantidad' ped.id %}" class=" badge btn btn-success btn-cantidad"><i class="bi bi-plus-circle"> 1</i></a>
+                        {% if ped.id_producto.stock <= ped.cantidad %}
+                            <p class="alert">Lo sentimos, no queda stock</p>
+                        {% endif %}
                     </div>
                     <i>{{ped.precio}}</i>
                 </li>

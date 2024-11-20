@@ -14,7 +14,11 @@
                 <h3 class="nom-platillos">{{ producto.nombre }}</h3>
                 <p><b>Descripción:</b> {{ producto.descripcion }}</p>
                 <p><b>Precio:</b> <i>${{ producto.precio }}</i></p>
-                <a href="{% url 'agregar_a_carrito' producto.id %}" class="btn btn-success">Agregar a carrito</a>
+                {% if producto.stock > 0%}
+                    <a href="{% url 'agregar_a_carrito' producto.id %}" class="btn btn-success">Agregar a carrito</a>
+                {% else %}
+                    <p>Lo sentimos, no tenemos stock</p>
+                {% endif %}
             </div>
         </div>
     </div>
