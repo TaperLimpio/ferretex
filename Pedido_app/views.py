@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
+from datetime import datetime
 from .models import Pedido, lista_de_pedidos
 from .forms import FiltroPedido
 from Usuario_app.models import Usuario
@@ -11,13 +12,24 @@ def consultar_pedidos(request):
     if request.method == "POST":
         filtro = FiltroPedido(request.POST)
         if filtro.is_valid():
+            print(filtro.fields)
             estado = filtro.cleaned_data['estado']
-            if (estado == 'Todo'):
+            por_fecha = filtro.cleaned_data['filtra_por_fechar']
+            fecha_de_inicio = filtro.cleaned_data['fecha_de_inicio']
+            print(fecha_de_inicio)
+            fecha_de_limite = filtro.cleaned_data['fecha_de_limite']
+            print(fecha_de_limite)
+            if por_fecha:
+                pedidos = Pedido.objects.filter(fechainicio__range = [fecha_de_inicio,fecha_de_limite],
+                                                fechaentrega__range = [fecha_de_inicio,fecha_de_limite])  
+            elif (estado == 'Todo'):
                 pedidos = Pedido.objects.all()
+                print(pedidos)
             else:
                 pedidos = Pedido.objects.filter(estado = estado)
     else:
         pedidos = Pedido.objects.all()
+    print(pedidos)
     data = {'pedidos':pedidos,'form':filtro}
     return render(request,'pedidos.html',data)
 

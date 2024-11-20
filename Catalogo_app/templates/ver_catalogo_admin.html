@@ -14,6 +14,7 @@
                 <h3 class="nom-platillos">{{ producto.nombre }}</h3>
                 <p><b>Descripción:</b> {{ producto.descripcion }}</p>
                 <p><b>Precio:</b> <i>${{ producto.precio }}</i></p>
+                <p><b>Cantidad en stock:</b> {{ producto.stock }}</p>
                 {% if producto.estado == 'Desactivado' %}
                 <a href="{% url 'activar_producto' producto.id %}" class="btn btn-success">Activar Producto</a>
                 {% else %}
