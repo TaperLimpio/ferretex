@@ -35,7 +35,7 @@ from Catalogo_app.views import ver_catalogoadmin,activar_catalogo,desactivar_cat
 from Catalogo_app.views import paginarepartidor
 
 from Sucursal_app.views import listasucursal, ingresarsucursal, consultarsucursal
-from Sucursal_app.views import modificarsucursal, deshabilitarsucursal
+from Sucursal_app.views import modificarsucursal, deshabilitarsucursal,habilitarsucursal
 
 from Pedido_app.views import consultar_pedidos,ver_pedido,mis_pedidos
 from Pedido_app.views import cancelar_pedido
@@ -80,6 +80,7 @@ urlpatterns = [
     path('consultar_sucursal/<int:id>/', consultarsucursal),
     path('modificar_sucursal/<int:id>/', modificarsucursal),
     path('deshabilitar_sucursal/<int:id>/', deshabilitarsucursal),
+    path('habilitar_sucursal/<int:id>/',habilitarsucursal),
 
     path('pedidos/',consultar_pedidos,name='pedidos'),
     path('ver_pedido/<int:pedido_id>/',ver_pedido),

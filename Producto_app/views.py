@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect,get_object_or_404
-from .forms import ProductoForm,Producto
+from .forms import ProductoForm,Producto,ProductoActualizarForm
 
 def ingresarproducto(request):
     
@@ -51,11 +51,11 @@ def desactivar_producto(request, producto_id):
 def actualizarproducto(request, producto_id):
     producto = get_object_or_404(Producto, id=producto_id)
     if request.method == 'POST':
-        form = ProductoForm(request.POST, request.FILES, instance=producto)  # Vincula el formulario con el platillo existente
+        form = ProductoActualizarForm(request.POST, request.FILES, instance=producto)  # Vincula el formulario con el platillo existente
         if form.is_valid():
             form.save()
             return redirect('ver_catalogo_admin', catalogo_id=producto.catalogo.id)  # Redirigir a una URL después de actualizar el formulario
     else:
-        form = ProductoForm(instance=producto)
+        form = ProductoActualizarForm(instance=producto)
     data = {'form': form, 'titulo': 'Actualizar producto'}
     return render(request, 'ingresarproductos.html', data)

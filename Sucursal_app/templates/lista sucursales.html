@@ -13,7 +13,11 @@
                         <p class="dir"><b>Direccion: </b>{{sur.direccion}}</p>
                         <a href="../consultar_sucursal/{{sur.id}}" class="btn btn-success"><i class="bi bi-eye"></i></a>
                         <a href="../modificar_sucursal/{{sur.id}}" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
-                        <a href="../deshabilitar_sucursal/{{sur.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                        {% if sur.estado == 'activo' %}
+                            <a href="../deshabilitar_sucursal/{{sur.id}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                        {% else %}
+                            <a href="../habilitar_sucursal/{{sur.id}}" class="btn btn-primary"><i class="bi bi-bag-plus"></i></a>
+                        {% endif %}
                     </div>
                 </div>
             </div> 
