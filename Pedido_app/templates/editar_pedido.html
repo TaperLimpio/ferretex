@@ -1,0 +1,12 @@
+{% include 'headerusuario.html' %}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <label for="txt_direccion" >Direccion</label>
+            <input type="text" name="txt_direccion" id="txt_direccion" 
+                   maxlength="40" class="form-control m-3" 
+                   value="{% if direccion %}{{direccion}}{% else %}{% endif %}">
+            <input type="submit" class="btn btn-success mt-2" value="Guardar">
+        </form>
+    </div>
+{% include 'footer.html' %}

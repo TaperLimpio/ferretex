@@ -16,6 +16,11 @@ class FiltroPedido(forms.Form):
     fecha_de_inicio = forms.DateTimeField(initial="1990-01-01 00:00:00")
     fecha_de_limite = forms.DateTimeField(initial=timezone.now())
 
+class FiltroPedidoUsuario(forms.Form):
+    filtra_por_fechar = forms.BooleanField(required=False)
+    fecha_de_inicio = forms.DateTimeField(initial="1990-01-01 00:00:00")
+    fecha_de_limite = forms.DateTimeField(initial=timezone.now())
+
 class PedidoForm(forms.Form):
     n_tarjeta = forms.CharField(max_length=10)
     direccion = forms.CharField(max_length=40)

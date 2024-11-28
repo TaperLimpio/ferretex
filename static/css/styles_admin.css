@@ -44,6 +44,15 @@ nav {
 }
 */
 
+.listadrop{
+    color: rgb(99, 78, 2);
+}
+.listadrop:hover{
+    color: rgb(0, 79, 32);
+    text-decoration: double;
+    text-shadow: 5px 5px 5px rgb(36, 71, 1);
+}
+
 i{
     color: rgb(99, 78, 2);
 }
@@ -95,7 +104,14 @@ a{
     width: 200px;
     height: 200px;
 }
-
+.foto-lista{
+    width: 200px;
+    height: 200px;
+}
+.foto-sucursal{
+    width: 600px;
+    height: 600px;
+}
 /*
 body {
     background: linear-gradient(135deg, #f3650c, #e07822);

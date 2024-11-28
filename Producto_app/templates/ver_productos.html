@@ -1,0 +1,53 @@
+{% if usuario.tipo == 'usuario' %}
+    {% include 'headerusuario.html' %}
+{% else %}
+    {% include 'headeradmin.html' %}
+{% endif %}
+    <div class="container">
+        <h2>Buscar Producto</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="txt_nombre" class="form-label">Nombre</label>
+            <input type="text" name="txt_nombre" id="txt_nombre" class="form-text">
+            <label for="txt_codigo" class="form-label">Codigo</label>
+            <input type="text" name="txt_codigo" id="txt_codigo" class="form-text">
+            <input type="submit" class="btn btn-success" value="guardar">
+        </form>
+        <div class="container">
+            {% if productos %}
+            {% for pro in productos %}
+            <div class="container row-platillo mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <img src="{{ pro.imagen.url }}" class="img-thumbnail foto-producto" alt="{{ producto.nombre }}">
+                    </div>
+                    <div class="col-md-8">
+                        <h3 class="nom-platillos">{{ pro.nombre }}</h3>
+                        <p><b>Descripción:</b> {{ pro.descripcion }}</p>
+                        <p><b>Codigo:</b> {{ pro.codigo }}</p>
+                        <p><b>Precio:</b> <i>${{ pro.precio }}</i></p>
+                        <p><b>Catalogo:</b> <i>{{ pro.catalogo.nombre }}</i></p>
+                        {% if usuario.tipo == 'usuario' %}
+                            {% if pro.stock > 0%}
+                                <a href="{% url 'agregar_a_carrito' producto.id %}" class="btn btn-success">Agregar a carrito</a>
+                            {% else %}
+                                <p>Lo sentimos, no tenemos stock</p>
+                            {% endif %}
+                        {% else %}
+                            {% if pro.estado == 'Desactivado' %}
+                            <a href="{% url 'activar_producto' pro.id %}" class="btn btn-success">Activar Producto</a>
+                            {% else %}
+                            <a href="{% url 'desactivar_producto' pro.id %}" class="btn btn-warning">Desactivar Producto</a>
+                            {% endif %}
+                            <a href="{% url 'actualizar_producto' pro.id %}" class="btn btn-info">Actualizar Producto</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <div class="alert alert-danger">No hay productos</div>
+            {% endif %}
+        </div>
+    </div>
+{% include 'footer.html' %}

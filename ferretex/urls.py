@@ -27,18 +27,18 @@ from Usuario_app.views import ver_usuario, Update_Usuario, delete_usuario
 from Usuario_app.views import Index_Usuario
 
 from Producto_app.views import ingresarproducto,activar_producto,desactivar_producto
-from Producto_app.views import actualizarproducto
+from Producto_app.views import actualizarproducto,ver_productos
 
 from Catalogo_app.views import ingresarcatalogo,paginaprincipal,paginaadmin
 from Catalogo_app.views import actualizarcatalogo,asignar_producto,ver_catalogo
 from Catalogo_app.views import ver_catalogoadmin,activar_catalogo,desactivar_catalogo
-from Catalogo_app.views import paginarepartidor
+from Catalogo_app.views import paginarepartidor,ver_catalogos
 
 from Sucursal_app.views import listasucursal, ingresarsucursal, consultarsucursal
 from Sucursal_app.views import modificarsucursal, deshabilitarsucursal,habilitarsucursal
 
 from Pedido_app.views import consultar_pedidos,ver_pedido,mis_pedidos
-from Pedido_app.views import cancelar_pedido
+from Pedido_app.views import cancelar_pedido,actualizar_pedido
 
 from Carrito_app.views import ver_carrito, agregar_a_carrito, aumentar_cantidad
 from Carrito_app.views import disminuir_cantidad,realizar_pedido,pagoexitoso
@@ -62,6 +62,7 @@ urlpatterns = [
     path('activar_producto/<int:producto_id>/',activar_producto, name='activar_producto'),
     path('desactivar_producto/<int:producto_id>/',desactivar_producto, name='desactivar_producto'),
     path('actualizar_producto/<int:producto_id>/',actualizarproducto, name='actualizar_producto'),
+    path('ver_productos/',ver_productos,name='ver_productos'),
     
     path('ingresar_catalogo/',ingresarcatalogo,name='ingresar_catalogo'),
     path('ver_catalogo/<int:catalogo_id>/', ver_catalogo, name='ver_catalogo'), 
@@ -73,7 +74,7 @@ urlpatterns = [
     path('ver_catalogo_admin/<int:catalogo_id>/', ver_catalogoadmin, name='ver_catalogo_admin'),
     path('activar_catalogo/<int:catalogo_id>/',activar_catalogo, name='activar_catalogo'),
     path('desactivar_catalogo/<int:catalogo_id>/',desactivar_catalogo, name='desactivar_catalogo'),
-
+    path('ver_catalogos/',ver_catalogos,name='ver_catalogos'),
 
     path('lista_sucursales/', listasucursal,name='lista_sucursales'),
     path('ingresar sucursal/',ingresarsucursal),
@@ -86,6 +87,7 @@ urlpatterns = [
     path('ver_pedido/<int:pedido_id>/',ver_pedido),
     path('mis_pedidos/',mis_pedidos,name='mis_pedidos'),
     path('cancelar_pedido/<int:id_pedido>',cancelar_pedido,name='cancelar_pedido'),
+    path('actualizar_pedido/<int:id_pedido>',actualizar_pedido,name='actualizar_pedido'),
 
     path('mi_carrito/<int:usuario_id>',ver_carrito,name="mi_carrito"),
     path('agregar_a_carrito/<int:producto_id>',agregar_a_carrito,name="agregar_a_carrito"),

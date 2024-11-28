@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .forms import ProductoForm,Producto,ProductoActualizarForm
+from Usuario_app.models import Usuario
 
 def ingresarproducto(request):
     
@@ -59,3 +60,18 @@ def actualizarproducto(request, producto_id):
         form = ProductoActualizarForm(instance=producto)
     data = {'form': form, 'titulo': 'Actualizar producto'}
     return render(request, 'ingresarproductos.html', data)
+
+def ver_productos(request):
+    usuario = Usuario.objects.get(id = request.session['usuario_id'])
+    productos = Producto.objects.all()
+    if request.method == "POST":
+        nombre = request.POST["txt_nombre"]
+        codigo = request.POST["txt_codigo"]
+        if codigo != "":
+            productos = Producto.objects.filter(codigo = codigo)
+        elif nombre != "":
+            productos = Producto.objects.filter(nombre__icontains = nombre)
+        else:
+            productos = Producto.objects.all()
+    data = {'productos':productos,'usuario':usuario}
+    return render(request,'ver_productos.html',data)

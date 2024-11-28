@@ -81,4 +81,13 @@ def desactivar_catalogo(request, catalogo_id):
     catalogo.save()
     return redirect('pagina_administrador')
 
-
+def ver_catalogos(request):
+    catalogos = Catalogo.objects.all()
+    if request.method == "POST":
+        nombre = request.POST["txt_nombre"]
+        if nombre != "":
+            catalogos = Catalogo.objects.filter(nombre__icontains = nombre)
+        else:
+            catalogos = Catalogo.objects.all()
+    data = {'catalogos':catalogos}
+    return render(request,'ver_catalogos.html',data)

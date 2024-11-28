@@ -55,7 +55,25 @@
             <a class="nav-link active" href="{% url 'pedidos' %}"><i class="bi bi-list-ol"> Pedidos</i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="{% url 'ingresar_catalogo' %}"><i class="bi bi-book-half booky"> Catálogo</i></a>
+            <a class="nav-link active" href="{% url 'ingresar_catalogo' %}"></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle listadrop" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-book-half"> Catalogo</i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'ingresar_catalogo' %}"><i class="bi bi-book"> Ingresar catálogo</i></a></li>
+              <li><a class="dropdown-item" href="{% url 'ver_catalogos' %}"><i class="bi bi-book-fill"></i> Buscar productos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle listadrop" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-box-seam-fill"> Productos</i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'ingresar_producto' %}"><i class="bi bi-box-seam caja"> Ingresar productos</i></a></li>
+              <li><a class="dropdown-item" href="{% url 'ver_productos' %}"><i class="bi bi-boxes"></i> Buscar productos</a></li>
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="{% url 'ingresar_producto' %}"><i class="bi bi-box-seam caja"> Productos</i></a>

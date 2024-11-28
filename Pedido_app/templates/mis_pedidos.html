@@ -1,6 +1,13 @@
 {% include 'headerusuario.html' %}
     <div class="container mt-5">
         <div class="alert alert-success display-1">Datos de los pedidos</div>
+        <div class="container">
+          <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="filtrar" id="btn_filtrar">
+          </form>
+        </div>
         {% if ped_activos or ped_pasados %}
         <div class="">
           <h3>Pedido Activos</h3>
@@ -19,6 +26,9 @@
           <tr><td>Acciones</td><td>
             <a href="{% url 'cancelar_pedido' pedido.id %}" class="btn btn-danger">
               <i class="bi bi-x-circle-fill boton"></i>
+            </a>
+            <a href="{% url 'actualizar_pedido' pedido.id %}" class="btn btn-warning">
+              <i class="bi bi-pencil"></i>
             </a>
           </td></tr>
         </table>

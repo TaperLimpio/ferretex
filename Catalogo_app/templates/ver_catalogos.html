@@ -1,0 +1,49 @@
+{% include 'headeradmin.html' %}
+<style>
+    .img-thumbnail {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        float: left;
+        margin-right: 20px;
+    }
+    .catalogo-text {
+        display: inline-block;
+        vertical-align: top;
+    }
+    .categoria {
+        overflow: hidden;
+    }
+</style>
+    <div class="container">
+        <h2>Buscar catalogo</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="txt_nombre" class="form-label">Nombre</label>
+            <input type="text" name="txt_nombre" id="txt_nombre" class="form-text">
+            <input type="submit" class="btn btn-success" value="guardar">
+        </form>
+        <div class="container">
+            {% if catalogos %}
+            {% for cat in catalogos %}
+            <div class="container mt-2 mf-2 categoria bg-light p-3 rounded shadow-sm">
+                <img src="{{ cat.imagen.url }}" class="img-thumbnail foto-catalogo" alt="{{ catalogo.nombre }}">
+                <div class="catalogo-text">
+                    <h2 class="titulo-categoria">{{ cat.nombre }}</h2>
+                    <p>{{ cat.descripcion }}</p>
+                    <a href="{% url 'ver_catalogo_admin' cat.id %}" class="btn btn-primary mb-3">Ver más</a>
+                    {% if catalogo.estado == 'Activado' %}
+                    <a href="{% url 'desactivar_catalogo' cat.id %}" class="btn btn-warning mb-3">Desactivar Catálogo</a>
+                    {% else %}
+                    <a href="{% url 'activar_catalogo' cat.id %}" class="btn btn-success mb-3">Activar Catálogo</a>
+                    {% endif %}
+                    <a href="{% url 'actualizar_catalogo' cat.id %}" class="btn btn-info mb-3">Actualizar Catálogo</a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+                <div class="alert alert-danger">No hay catalogos</div>
+            {% endif %}
+        </div>
+    </div>
+{% include 'footer.html' %}
