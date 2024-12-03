@@ -1,28 +1,20 @@
 from typing import Any
 from django import forms 
 from Usuario_app.models import Usuario
-from itertools import cycle
+import re
 
+def verificar(rut):
+    M = 0
+    S = 1
+    while rut:
+        None
 
-def validar_rut(rut):
-    rut = rut.upper().replace("-", "").replace(".", "")
-    rut_aux = rut[:-1]
-    dv = rut[-1:]
-
-    if not rut_aux.isdigit() or not (1_000_000 <= int(rut_aux) <= 25_000_000):
+def validar_rut(rutentrante):
+    if(bool(re.search("^[0-9]+-[0-9kK]{1}$",rutentrante))):
+        return True
+    else:
         return False
-
-    revertido = map(int, reversed(rut_aux))
-    factors = cycle(range(2, 8))
-    suma = sum(d * f for d, f in zip(revertido, factors))
-    residuo = suma % 11
-
-    if dv == 'K':
-        return residuo == 1
-    if dv == '0':
-        return residuo == 11
-    return residuo == 11 - int(dv)
-
+        
 
 
 FILTRO_DECICIONES_1=(
@@ -84,8 +76,10 @@ class UsuarioAdminForm(forms.ModelForm):
 
     def clean_rut(self):
         rut = self.cleaned_data.get('rut')
-        if validar_rut(rut):
+        if validar_rut(rut) == False:
             raise forms.ValidationError('Este RUT no es valido')
+        if Usuario.objects.filter(rut=rut).exists():
+            raise forms.ValidationError('Ingrese un rut no ocupado')
         return rut
     
     def clean_email(self):
