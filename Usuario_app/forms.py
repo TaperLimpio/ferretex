@@ -54,12 +54,11 @@ class UsuarioForm(forms.ModelForm):
             raise forms.ValidationError('Este correo electrónico ya está registrado.')
         return email
     
-    def clean_nombre(self):
-        nombre = self.cleaned_data.get('nombre')
-        if Usuario.objects.filter(nombre=nombre).exists():
-            raise forms.ValidationError('Utilice otro nombre.')
-        return nombre
-
+    def clean_contraseña(self):
+        contraseña = self.cleaned_data.get('contraseña')
+        if Usuario.objects.filter(contraseña=contraseña).exists():
+            raise forms.ValidationError('Utilice otra contraseña.')
+        return contraseña   
 
 class UsuarioAdminForm(forms.ModelForm):
     class Meta:
@@ -90,11 +89,11 @@ class UsuarioAdminForm(forms.ModelForm):
             raise forms.ValidationError('Este correo electrónico ya está registrado.')
         return email
 
-    def clean_nombre(self):
-        nombre = self.cleaned_data.get('nombre')
-        if Usuario.objects.filter(nombre=nombre).exists():
-            raise forms.ValidationError('Utilice otro nombre.')
-        return nombre    
+    def clean_contraseña(self):
+        contraseña = self.cleaned_data.get('contraseña')
+        if Usuario.objects.filter(contraseña=contraseña).exists():
+            raise forms.ValidationError('Utilice otra contraseña.')
+        return contraseña    
     
     def clean_tipo(self):
         tipo = self.cleaned_data.get('tipo')
