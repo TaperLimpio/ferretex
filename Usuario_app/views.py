@@ -71,30 +71,30 @@ def delete_usuario(request, emp_id):
     return redirect('login')
 
 def Index_Usuario(request):
-    filtro = Filtro(initial={'tipo':'----','estado':'----'})
-    if request.method=="POST":
+    filtro = Filtro(initial={'tipo': '----', 'estado': '----'})
+    usuarios = []
+
+    if request.method == "POST":
         filtro = Filtro(request.POST)
+        rut = request.POST.get('rut', '')
+
         if filtro.is_valid():
-            Tipo = filtro.cleaned_data['tipo']
-            Estado = filtro.cleaned_data['estado']
-            print(Tipo)
-            print(Estado)
-            if (Tipo == 'Todo' and Estado == 'Todo'):
-                print("todo")
-                usuario = Usuario.objects.all()
-                print(usuario)
-            elif(Tipo != 'Todo' and Estado == 'Todo'):
-                print("por tipo")
-                usuario = Usuario.objects.filter(tipo = Tipo)
-                print(usuario)
-            elif(Estado != 'Todo'and Tipo == 'Todo'):
-                print("por estado")
-                usuario = Usuario.objects.filter(estado = Estado)
-                print(usuario)
+            tipo = filtro.cleaned_data['tipo']
+            estado = filtro.cleaned_data['estado']
+
+            if rut:
+                usuarios = Usuario.objects.filter(rut__icontains=rut)
+            elif tipo == 'Todo' and estado == 'Todo':
+                usuarios = Usuario.objects.all()
+            elif tipo != 'Todo' and estado == 'Todo':
+                usuarios = Usuario.objects.filter(tipo=tipo)
+            elif estado != 'Todo' and tipo == 'Todo':
+                usuarios = Usuario.objects.filter(estado=estado)
             else:
-                print("por tipo y estado")
-                usuario = Usuario.objects.filter(tipo = Tipo,estado = Estado)
-    else:        
-        usuario = Usuario.objects.all()
-    data = {'usuario': usuario,'form':filtro}
+                usuarios = Usuario.objects.filter(tipo=tipo, estado=estado)
+
+    else:
+        usuarios = Usuario.objects.all()
+
+    data = {'usuario': usuarios, 'form': filtro}
     return render(request, 'usuarios.html', data)
